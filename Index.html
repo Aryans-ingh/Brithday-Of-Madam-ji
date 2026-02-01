@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Specially For You!! 💕</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height:100vh;
+      background: linear-gradient(135deg, #fff0f5, #ffe6f2, #f9f0ff);
+      color:#444;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    .float {
+      position:absolute; font-size:1.8rem; opacity:0.4; pointer-events:none;
+      animation:float 25s infinite linear;
+    }
+    @keyframes float { 0% { transform:translateY(110vh) rotate(0deg); } 100% { transform:translateY(-40vh) rotate(720deg); } }
+
+    .slide {
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      padding:15px;
+      opacity:0; pointer-events:none;
+      transition:opacity 0.8s ease;
+    }
+    .slide.active { opacity:1; pointer-events:all; }
+
+    .card {
+      background:#fffef5;
+      border-radius:28px;
+      box-shadow:0 10px 40px rgba(255,182,193,0.25);
+      max-width:90%; width:100%; max-width:480px;
+      padding:25px 20px;
+      text-align:center;
+      border:1px solid #ffe4ec;
+      position:relative;
+    }
+
+    .top-dots { position:absolute; top:10px; left:12px; display:flex; gap:8px; }
+    .dot { width:10px; height:10px; border-radius:50%; }
+    .red { background:#ff5f57; } .yellow { background:#febc2e; } .green { background:#28c840; }
+
+    h2 { font-size:2.2rem; margin:15px 0 10px; color:#ff4d88; line-height:1.1; }
+    .heart { font-size:2rem; vertical-align:middle; }
+
+    .kitty-top {
+      position:absolute; top:-45px; right:-25px;
+      width:90px; height:auto; max-width:25vw;
+      transform:rotate(10deg);
+    }
+
+    .btn {
+      background:#ff66b2; color:white; font-size:1.2rem; font-weight:bold;
+      padding:12px 40px; border-radius:50px; border:none; cursor:pointer;
+      box-shadow:0 6px 20px rgba(255,102,178,0.35);
+      transition:all 0.3s;
+    }
+    .btn:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(255,102,178,0.5); }
+
+    /* Slide 4 - Playlist */
+    .playlist-title { font-size:2rem; color:#ff6699; margin:10px 0 5px; }
+    .playlist-subtitle { font-size:1.2rem; color:#ff99cc; margin-bottom:15px; }
+    .choose-text { font-size:1.15rem; color:#ff6699; margin:15px 0; }
+
+    .playlist-grid {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:20px;
+      max-width:700px; margin:20px auto;
+    }
+
+    .playlist-card {
+      width:220px; max-width:45%; background:#fff; border-radius:24px;
+      overflow:hidden; box-shadow:0 8px 25px rgba(255,105,180,0.25);
+      transition:transform 0.3s;
+    }
+    .playlist-card:hover { transform:scale(1.04); }
+
+    .card-image-wrapper {
+      position:relative; cursor:pointer;
+    }
+
+    .card-image {
+      width:100%; height:220px; object-fit:cover; display:block;
+    }
+
+    .play-overlay {
+      position:absolute; inset:0; background:rgba(0,0,0,0.45);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; transition:opacity 0.4s ease;
+      color:white; font-size:4rem;
+      pointer-events:none;
+    }
+
+    .playlist-card:hover .play-overlay,
+    .playlist-card.playing .play-overlay {
+      opacity:1;
+    }
+
+    .card-info { padding:12px 10px; text-align:center; }
+    .song-title { font-size:1.1rem; color:#ff4d88; margin-bottom:4px; font-weight:bold; }
+    .dedication { font-size:0.95rem; color:#ff6699; font-style:italic; }
+
+    #sharedPlayer {
+      width:90%; max-width:400px; margin:30px auto; display:block;
+    }
+
+    @media (max-width: 500px) {
+      .playlist-card { width:160px; }
+      .card-image { height:160px; }
+      h2 { font-size:1.8rem; }
+      .playlist-grid { gap:15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="float" style="left:10%; animation-duration:22s;">💖</div>
+  <div class="float" style="left:40%; animation-duration:28s; animation-delay:4s;">✨</div>
+  <div class="float" style="left:70%; animation-duration:20s; animation-delay:2s;">🌸</div>
+
+  <!-- Slide 1 -->
+  <div id="slide1" class="slide active">
+    <div class="card">
+      <div class="top-dots">
+        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+      </div>
+      <img class="kitty-top" src="https://www.clipartmax.com/png/middle/33-332761_hello-kitty-holding-a-hair-brush-hello-kitty-name-tag.png" alt="Hello Kitty">
+      <h2>Hey Shreejal!<span class="heart"> ❤️</span></h2>
+      <p>I wanted to do something special for you!!So I made this Just for U🎀.AND sorry for delay😅...</p>
+      <img src="https://img.freepik.com/premium-vector/set-beautiful-bright-bouquets-flat-style-perfect-postcards-holidays-weddings_1294209-36.jpg" alt="Bouquet" style="width:120px; height:auto; margin:15px auto; display:block;">
+      <button class="btn" onclick="document.getElementById('slide1').classList.remove('active'); document.getElementById('slide2').classList.add('active');">Open My Heart 👉💗</button>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div id="slide2" class="slide">
+    <div style="text-align:center;">
+      <h2 class="playlist-title">A Birthday Letter 💌</h2>
+      <div style="margin:30px auto; width:280px; height:200px; background:#ffb3d9; border-radius:20px; display:flex; align-items:center; justify-content:center; cursor:pointer;" onclick="document.getElementById('slide2').classList.remove('active'); document.getElementById('slide3').classList.add('active');">
+        <p style="color:white; font-size:1.5rem;">Tap to Open</p>
+      </div>
+      <button class="btn" onclick="document.getElementById('slide2').classList.remove('active'); document.getElementById('slide3').classList.add('active');">Open Envelope</button>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div id="slide3" class="slide">
+    <div class="card">
+      <img class="kitty-top" src="https://thumbs.dreamstime.com/b/cartoon-cat-vibrant-colors-holding-lovely-bouquet-flowers-colorful-style-cute-joyfully-various-beautiful-its-paws-407571351.jpg" alt="Kitty">
+      <h2>My Small Effort for U! 👉👈</h2>
+      <p style="font-size:1.05rem; line-height:1.7; margin:15px 0;">
+        My dear Madam jii🎀<br><br>
+        First of all I am realy sorry. maine itni late kr di tumhe gift dene mai ♡<br>
+        But trust me! I made this with my Heart.<br>
+        Thanks for making my life special. Hope your day is super happy!<br><br>
+        Lots of hugs 🤗
+      </p>
+      <div style="width:80px; height:80px; margin:20px auto; background:#ff99cc; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2.5rem;">💗</div>
+      <button class="btn" onclick="document.getElementById('slide3').classList.remove('active'); document.getElementById('slide4').classList.add('active');">Continue to Playlist ✨</button>
+    </div>
+  </div>
+
+  <!-- Slide 4: Playlist -->
+  <div id="slide4" class="slide">
+    <div style="text-align:center; width:100%; max-width:900px; padding:15px;">
+      <h2 class="playlist-title">A Dedicated Playlist For You</h2>
+      <p class="playlist-subtitle">I Hope You'll Like It</p>
+      <p class="choose-text">Choose a track to start vibing ✨</p>
+
+      <div class="playlist-grid">
+        <!-- Card 1 -->
+        <div class="playlist-card">
+          <div class="image-wrapper" onclick="toggleSong('https://files.catbox.moe/9c9rl2.mp3', this.parentNode)" 
+     style="width:220px; background:#fff; border-radius:24px; overflow:hidden; box-shadow:0 8px 25px rgba(255,105,180,0.25); cursor:pointer; transition:transform 0.3s;">
+  <img src="https://wallpapers.com/images/high/hello-kitty-loves-spiderman-fhoxapo6edn5axfg.jpg" alt="Die with a Smile" style="width:100%; height:220px; object-fit:cover;">
+            <div class="play-overlay"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="card-info">
+            <p class="song-title">Golden brown</p>
+            <p class="dedication">cause — dedicated to you ♥</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="playlist-card">
+          <div class="image-wrapper" onclick="toggleSong('https://files.catbox.moe/c8xqyl.mp3', this.parentNode)"
+     style="width:220px; background:#fff; border-radius:24px; overflow:hidden; box-shadow:0 8px 25px rgba(255,105,180,0.25); cursor:pointer; transition:transform 0.3s;">
+  <img src="https://wallpapers-clan.com/wp-content/uploads/2026/01/hello-kitty-x-spider-man-swinging-city-mashup-wallpapers-collection.jpg" alt="Ha Tum Bilkul Waisi Ho" style="width:100%; height:220px; object-fit:cover;">
+            <div class="play-overlay"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="card-info">
+            <p class="song-title">Dooron Dooron</p>
+            <p class="dedication">Everyday heart thaws, on dilly ♥</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="playlist-card">
+          <div class="image-wrapper" onclick="toggleSong('https://files.catbox.moe/p6g7j2.mp3',this.parentNode)" 
+     style="width:220px; background:#fff; border-radius:24px; overflow:hidden; box-shadow:0 8px 25px rgba(255,105,180,0.25); cursor:pointer; transition:transform 0.3s;">
+ <img src="https://www.lemon8-app.com/seo/image?item_id=7302920154097484293&index=0&sign=062cfde38f06bff239e6c11cbe426895" alt="Dil Ka Jo Haal Hai" style="width:100%; height:220px; object-fit:cover;">
+            <div class="play-overlay"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="card-info">
+            <p class="song-title">Perfect</p>
+            <p class="dedication">Perfect just like you!♥</p>
+          </div>
+        </div>
+      </div>
+<button class="btn" onclick="document.querySelectorAll('.slide').forEach(s => s.classList.remove('active')); document.getElementById('slide5').classList.add('active');" style="margin: 30px auto; display:block;">
+  Next is the BEST PART ✨✨
+</button>
+      <!-- Shared audio player -->
+      <audio id="sharedPlayer" controls loop style="width:90%; max-width:400px; margin:30px auto; display:block;"></audio>
+    </div>
+  </div>
+
+
+<!-- Slide 5: All Messages Unlocked popup -->
+<div id="slide5" class="slide" style="background:rgba(0,0,0,0.4); backdrop-filter:blur(5px); z-index:1000;">
+  <div style="background:#fff; border-radius:28px; padding:40px 30px; max-width:420px; width:90%; text-align:center; box-shadow:0 15px 50px rgba(255,105,180,0.5); position:relative;">
+    <!-- Top icon -->
+    <div style="font-size:4rem; margin-bottom:15px;">🌮✨</div>
+
+    <h2 style="font-size:2.2rem; color:#ff4d88; margin-bottom:10px;">All Messages Unlocked!</h2>
+
+    <p style="font-size:1.15rem; color:#555; line-height:1.6; margin-bottom:25px;">
+      Each message is a piece of my heart that belongs to<br>
+      you forever. 💖
+    </p>
+
+    <button class="btn" style="padding:14px 50px; font-size:1.25rem;" onclick="document.getElementById('slide5').classList.remove('active'); document.getElementById('slide6').classList.add('active');"!)">
+      Open the Final Letter 📩
+    </button>
+
+    <p style="font-size:1rem; color:#ff99cc; margin-top:20px;">
+      Stay here a bit longer ♡
+    </p>
+  </div>
+</div>
+<!-- Slide 6: Final Birthday Letter -->
+<div id="slide6" class="slide" style="background:rgba(0,0,0,0.35); backdrop-filter:blur(6px); z-index:1001;">
+  <div style="background:#fffef9; border-radius:32px; padding:45px 35px; max-width:500px; width:92%; text-align:center; box-shadow:0 20px 60px rgba(255,105,180,0.4); position:relative; border:2px solid #ffe4f0;">
+    <!-- Top icon -->
+    <div style="width:80px; height:80px; margin:0 auto 20px; background:#ff66b2; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:3rem; color:white; box-shadow:0 8px 25px rgba(255,102,178,0.4);">
+      💌
+    </div>
+
+    <h2 style="font-size:2.4rem; color:#ff4d88; margin-bottom:15px;">Final Birthday Letter</h2>
+
+    <p style="font-size:1.25rem; color:#555; line-height:1.8; margin-bottom:30px; font-family:'Segoe UI', sans-serif;">
+      My sweetest Kiku,<br><br>
+
+      U'r the Best person that came in my life ever and forever will be!<br>
+      I hope this tiny Efforts of this buddhu! made you smile😌 — and whispered how much you mean to me.<br><br>
+
+      I'll keep making memories, big and small, always with you.<br>
+      Forever yours, in every universe.<br><br>
+
+      Happy Birthday, Shreejal ♡
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:20px; margin-top:25px;">
+      <button class="btn" style="background:#ff66b2;" onclick="document.getElementById('slide6').classList.remove('active'); document.getElementById('slide7').classList.add('active'); launchButterfliesAndClose();">
+        Seal this Letter 💌
+      </button>
+      <button class="btn" style="background:#28c840;" onclick="location.reload()">
+        Restart
+      </button>
+    </div>
+
+    <p style="font-size:1rem; color:#ff99cc; margin-top:25px;">
+      Sealing will finish the experience.
+    </p>
+  </div>
+</div>
+<!-- Slide 7: Butterfly flutter animation after sealing -->
+<div id="slide7" class="slide" style="background:linear-gradient(135deg, #ffe6f2, #fff0f5, #f9f0ff); z-index:2000; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+  <div style="position:relative; width:100%; height:100%; text-align:center;">
+    <!-- Main title -->
+    <h2 style="font-size:3rem; color:#ff4d88; margin:40px 0 20px; text-shadow:0 4px 15px rgba(255,105,180,0.6);">
+      Sealed with Love ♡
+    </h2>
+
+    <!-- Butterfly container -->
+    <div id="butterfly-container" style="position:absolute; inset:0; pointer-events:none;"></div>
+
+    <!-- Small closing text -->
+    <p style="font-size:1.3rem; color:#ff6699; margin-top:40px;">
+      Thank you! us har harketo ko bardast krne ke liye jo maine ki hai... 💕<br>
+      Happy Birthday, 
+Maine tumhara birthday gift redy kr ke rkha hai bass kb milna hai???<br>
+    </p>
+  </div>
+</div>
+  <script>
+    const player = document.getElementById('sharedPlayer');
+    let currentCard = null;
+
+    function toggleSong(mp3Url, card) {
+      // Pause first (always safe)
+      player.pause();
+      player.currentTime = 0;
+
+      // If same card and already playing → just pause
+      if (currentCard === card && player.src === mp3Url) {
+        card.classList.remove('playing');
+        currentCard = null;
+        return;
+      }
+
+      // Switch to new song and play
+      player.src = mp3Url;
+      player.load();
+
+      player.play().then(() => {
+        // Clear previous playing state
+        if (currentCard && currentCard !== card) {
+          currentCard.classList.remove('playing');
+        }
+        // Set new playing state
+        card.classList.add('playing');
+        currentCard = card;
+      }).catch(err => {
+        console.log("Play blocked:", err);
+        alert("Tap the image again — browser needs one more tap to allow sound.");
+      });
+    }
+  </script>
+
+</body>
+</html>
